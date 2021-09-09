@@ -4,7 +4,7 @@ import (
 	"github.com/lavinas-science/learn-users-api/app"
 )
 
-func main () {
+func main() {
 
 	app.StartApllication()
 

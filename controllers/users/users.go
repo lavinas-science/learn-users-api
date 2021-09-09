@@ -8,13 +8,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lavinas-science/learn-users-api/domain/users"
 	"github.com/lavinas-science/learn-users-api/services"
+	"github.com/lavinas-science/learn-users-api/utils/errors"
 )
 
-func GetUser (c *gin.Context) {	
+func GetUser(c *gin.Context) {
 	c.String(http.StatusNotImplemented, "Implement get user !\n")
 }
 
-func CreateUser (c *gin.Context) {
+func CreateUser(c *gin.Context) {
 	var user users.User
 	/* see refact below
 	b, err := ioutil.ReadAll(c.Request.Body)
@@ -28,19 +29,19 @@ func CreateUser (c *gin.Context) {
 	}
 	*/
 	if err := c.ShouldBindJSON(&user); err != nil {
-		// TODO: Handle error
+		err := errors.NewBadRequestError("invalid json body")
+		c.JSON(err.Status, err)
 		return
 	}
 
 	cr, err := services.CreateUser(user)
 	if err != nil {
-		// TODO: Handle error
+		c.JSON(err.Status, err)
 		return
 	}
 	c.JSON(http.StatusCreated, cr)
 }
 
-
-func SearchUser (c *gin.Context) {
+func SearchUser(c *gin.Context) {
 	c.String(http.StatusNotImplemented, "Implement search user !\n")
 }
