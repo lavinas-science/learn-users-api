@@ -4,6 +4,7 @@ import (
 	// "encoding/json"
 	// "io/ioutil"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/lavinas-science/learn-users-api/domain/users"
@@ -12,7 +13,19 @@ import (
 )
 
 func GetUser(c *gin.Context) {
-	c.String(http.StatusNotImplemented, "Implement get user !\n")
+	uid, err := strconv.ParseInt(c.Param("user_id"), 10, 64)
+	if err != nil {
+		err := errors.NewBadRequestError("invalid user id")
+		c.JSON(err.Status, err)
+		return
+	}
+
+	u, err2 := services.GetUser(uid)
+	if err2 != nil {
+		c.JSON(err2.Status, err2)
+		return
+	}
+	c.JSON(http.StatusOK, u)
 }
 
 func CreateUser(c *gin.Context) {
