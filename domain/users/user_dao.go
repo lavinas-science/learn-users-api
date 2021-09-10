@@ -3,6 +3,7 @@ package users
 import (
 	"fmt"
 
+	"github.com/lavinas-science/learn-users-api/datasources/mysql/users_db"
 	"github.com/lavinas-science/learn-users-api/utils/dates"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
 )
@@ -12,6 +13,10 @@ var (
 )
 
 func (user *User) Get() *errors.RestErr {
+	if err := users_db.Db.Ping(); err != nil {
+		panic(err)
+	}
+
 	r := userDB[user.Id]
 	if r == nil {
 		return errors.NewNotFoundError(fmt.Sprintf("user %d not found", user.Id))

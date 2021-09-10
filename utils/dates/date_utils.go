@@ -13,4 +13,3 @@ func GetNow() time.Time {
 func GetNowString() string {
 	return GetNow().Format(dateLayout)
 }
-

@@ -15,7 +15,6 @@ func CreateUser(user users.User) (*users.User, *errors.RestErr) {
 	return &user, nil
 }
 
-
 func GetUser(userid int64) (*users.User, *errors.RestErr) {
 	u := users.User{Id: userid}
 	if err := u.Get(); err != nil {
