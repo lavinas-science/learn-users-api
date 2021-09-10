@@ -19,3 +19,7 @@ func NewBadRequestError(message string) *RestErr {
 func NewNotFoundError(message string) *RestErr {
 	return NewRestErr(message, http.StatusNotFound, "not_found")
 }
+
+func NewInternalServerError(message string) *RestErr {
+	return NewRestErr(message, http.StatusInternalServerError, "internal_server_error")
+}

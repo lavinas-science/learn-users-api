@@ -13,7 +13,7 @@ const (
 	user   = "USERS_USERNAME"
 	pass   = "USERS_PASSWD"
 	host   = "USERS_HOST"
-	scheme = "USERS_SCHERME"
+	scheme = "USERS_SCHEME"
 )
 
 var (
