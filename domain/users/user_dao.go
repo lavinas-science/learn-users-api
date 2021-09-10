@@ -3,6 +3,7 @@ package users
 import (
 	"fmt"
 
+	"github.com/lavinas-science/learn-users-api/utils/dates"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
 )
 
@@ -23,7 +24,7 @@ func (user *User) Get() *errors.RestErr {
 	return nil
 }
 
-func (user User) Save() *errors.RestErr {
+func (user *User) Save() *errors.RestErr {
 	db := userDB[user.Id]
 	if db != nil {
 		if db.Email == user.Email {
@@ -31,6 +32,9 @@ func (user User) Save() *errors.RestErr {
 		}
 		return errors.NewBadRequestError(fmt.Sprintf("user %d already exists", user.Id))
 	}
-	userDB[user.Id] = &user
+
+	user.DateCreated = dates.GetNowString()
+
+	userDB[user.Id] = user
 	return nil
 }
