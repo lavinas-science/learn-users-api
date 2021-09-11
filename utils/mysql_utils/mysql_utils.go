@@ -21,8 +21,8 @@ func ParseError(err error) *errors.RestErr {
 		return errors.NewInternalServerError(fmt.Sprintf("Error parsing database response: %s", err.Error()))
 	}
 	switch sqlErr.Number {
-		case 1062: 
-			return errors.NewBadRequestError("Duplicated data")
+	case 1062:
+		return errors.NewBadRequestError("Duplicated data")
 	}
 	return errors.NewInternalServerError(fmt.Sprintf("Error processing request: %s", err.Error()))
 }
