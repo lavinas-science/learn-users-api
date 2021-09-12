@@ -2,11 +2,31 @@ package services
 
 import (
 	"github.com/lavinas-science/learn-users-api/domain/users"
+	"github.com/lavinas-science/learn-users-api/utils/crypto_utils"
+	date_utils "github.com/lavinas-science/learn-users-api/utils/dates_utils"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
 )
 
-func CreateUser(user users.User) (*users.User, *errors.RestErr) {
+var (
+	UserService userServiceInterface = &userService{}
+)
+
+type userService struct {
+}
+
+type userServiceInterface interface {
+	CreateUser(users.User) (*users.User, *errors.RestErr)
+	GetUser(int64) (*users.User, *errors.RestErr)
+	UpdateUser(bool, users.User) (*users.User, *errors.RestErr)
+	DeleteUser(int64) *errors.RestErr
+	SearchUser(string) (users.Users, *errors.RestErr)
+}
+
+func (s *userService) CreateUser(user users.User) (*users.User, *errors.RestErr) {
 	user.Status = users.StatusActive
+	user.DateCreated = date_utils.GetNowDb()
+	user.Password = crypto_utils.GetMd5(user.Password)
+
 	if err := user.Validate(); err != nil {
 		return nil, err
 	}
@@ -16,7 +36,7 @@ func CreateUser(user users.User) (*users.User, *errors.RestErr) {
 	return &user, nil
 }
 
-func GetUser(userid int64) (*users.User, *errors.RestErr) {
+func (s *userService) GetUser(userid int64) (*users.User, *errors.RestErr) {
 	u := users.User{Id: userid}
 	if err := u.Get(); err != nil {
 		return nil, err
@@ -27,8 +47,8 @@ func GetUser(userid int64) (*users.User, *errors.RestErr) {
 	return &u, nil
 }
 
-func UpdateUser(isPartial bool, user users.User) (*users.User, *errors.RestErr) {
-	curUser, err := GetUser(user.Id)
+func (s *userService) UpdateUser(isPartial bool, user users.User) (*users.User, *errors.RestErr) {
+	curUser, err := UserService.GetUser(user.Id)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +70,7 @@ func UpdateUser(isPartial bool, user users.User) (*users.User, *errors.RestErr) 
 	return curUser, nil
 }
 
-func DeleteUser(userId int64) *errors.RestErr {
+func (s *userService) DeleteUser(userId int64) *errors.RestErr {
 	usr := &users.User{Id: userId}
 	if err := usr.Delete(); err != nil {
 		return err
@@ -58,7 +78,7 @@ func DeleteUser(userId int64) *errors.RestErr {
 	return nil
 }
 
-func Search(status string) ([]users.User, *errors.RestErr) {
+func (s *userService) SearchUser(status string) (users.Users, *errors.RestErr) {
 	d := &users.User{}
 	return d.FindByStatus(status)
 }

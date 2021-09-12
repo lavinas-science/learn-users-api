@@ -27,12 +27,12 @@ func Get(c *gin.Context) {
 		c.JSON(err.Status, err)
 		return
 	}
-	u, err2 := services.GetUser(uid)
+	u, err2 := services.UserService.GetUser(uid)
 	if err2 != nil {
 		c.JSON(err2.Status, err2)
 		return
 	}
-	c.JSON(http.StatusOK, u)
+	c.JSON(http.StatusOK, u.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
 func Create(c *gin.Context) {
@@ -53,12 +53,12 @@ func Create(c *gin.Context) {
 		c.JSON(err.Status, err)
 		return
 	}
-	cr, err := services.CreateUser(user)
+	cr, err := services.UserService.CreateUser(user)
 	if err != nil {
 		c.JSON(err.Status, err)
 		return
 	}
-	c.JSON(http.StatusCreated, cr)
+	c.JSON(http.StatusCreated, cr.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
 func Update(c *gin.Context) {
@@ -75,12 +75,12 @@ func Update(c *gin.Context) {
 	}
 	user.Id = uid
 	isPart := c.Request.Method == http.MethodPatch
-	us, errUp := services.UpdateUser(isPart, user)
+	us, errUp := services.UserService.UpdateUser(isPart, user)
 	if errUp != nil {
 		c.JSON(errUp.Status, errUp)
 		return
 	}
-	c.JSON(http.StatusOK, us)
+	c.JSON(http.StatusOK, us.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
 func Delete(c *gin.Context) {
@@ -89,7 +89,7 @@ func Delete(c *gin.Context) {
 		c.JSON(err.Status, err)
 		return
 	}
-	if err := services.DeleteUser(uid); err != nil {
+	if err := services.UserService.DeleteUser(uid); err != nil {
 		c.JSON(err.Status, err)
 		return
 	}
@@ -98,10 +98,10 @@ func Delete(c *gin.Context) {
 
 func Search(c *gin.Context) {
 	status := c.Query("status")
-	users, err := services.Search(status)
+	users, err := services.UserService.SearchUser(status)
 	if err != nil {
 		c.JSON(err.Status, err)
 		return
 	}
-	c.JSON(http.StatusOK, users)
+	c.JSON(http.StatusOK, users.Marshall(c.GetHeader("X-Public") == "true"))
 }

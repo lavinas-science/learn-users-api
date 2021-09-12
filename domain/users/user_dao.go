@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/lavinas-science/learn-users-api/datasources/mysql/users_db"
-	"github.com/lavinas-science/learn-users-api/utils/dates"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
 	"github.com/lavinas-science/learn-users-api/utils/mysql_utils"
 )
@@ -36,7 +35,6 @@ func (user *User) Save() *errors.RestErr {
 		return errors.NewInternalServerError(err.Error())
 	}
 	defer stmt.Close()
-	user.DateCreated = dates.GetNowDb()
 	res, err := stmt.Exec(user.FirstName, user.LastName, user.Email, user.DateCreated, user.Status, user.Password)
 	// can replace all above by this
 	// res, saveRrr := users_db.Db.Exec(queryInsertUser, user.FirstName, user.LastName, user.Email, user.DateCreated)
@@ -77,7 +75,7 @@ func (user *User) Delete() *errors.RestErr {
 	return nil
 }
 
-func (user *User) FindByStatus(status string) ([]User, *errors.RestErr) {
+func (user *User) FindByStatus(status string) (Users, *errors.RestErr) {
 	stmt, err := users_db.Db.Prepare(queryFindByStatus)
 	if err != nil {
 		return nil, errors.NewInternalServerError(err.Error())

@@ -1,4 +1,4 @@
-package dates
+package date_utils
 
 import "time"
 
