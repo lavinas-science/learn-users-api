@@ -3,7 +3,6 @@ package users_db
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -22,7 +21,6 @@ var (
 
 func init() {
 	var err error
-	log.Println(os.Getenv(user), os.Getenv(pass), os.Getenv(host), os.Getenv(scheme))
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8",
 		os.Getenv(user), os.Getenv(pass), os.Getenv(host), os.Getenv(scheme))
 	Db, err = sql.Open("mysql", dsn)
@@ -32,5 +30,4 @@ func init() {
 	if err := Db.Ping(); err != nil {
 		panic(err)
 	}
-	log.Println("database sucessfully connected")
 }
