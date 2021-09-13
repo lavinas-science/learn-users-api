@@ -10,7 +10,6 @@ type RestErr struct {
 	Error   string `json:"error"`
 }
 
-
 func NewRestErr(message string, status int, error string) *RestErr {
 	return &RestErr{message, status, error}
 }

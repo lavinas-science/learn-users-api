@@ -5,8 +5,8 @@ import (
 
 	"github.com/lavinas-science/learn-users-api/datasources/mysql/users_db"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
-	"github.com/lavinas-science/learn-users-api/utils/mysql_utils"
 	"github.com/lavinas-science/learn-users-api/utils/logger"
+	"github.com/lavinas-science/learn-users-api/utils/mysql_utils"
 )
 
 const (

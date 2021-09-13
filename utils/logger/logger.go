@@ -14,16 +14,16 @@ func GetLogger() *zap.Logger {
 }
 
 func init() {
-	logConfig := zap.Config {
+	logConfig := zap.Config{
 		OutputPaths: []string{"stdout"},
-		Level: zap.NewAtomicLevelAt(zap.InfoLevel),
-		Encoding: "json",
+		Level:       zap.NewAtomicLevelAt(zap.InfoLevel),
+		Encoding:    "json",
 		EncoderConfig: zapcore.EncoderConfig{
-			LevelKey: "level",
-			TimeKey: "time",
-			MessageKey: "msg",
-			EncodeTime: zapcore.ISO8601TimeEncoder,
-			EncodeLevel: zapcore.LowercaseLevelEncoder,
+			LevelKey:     "level",
+			TimeKey:      "time",
+			MessageKey:   "msg",
+			EncodeTime:   zapcore.ISO8601TimeEncoder,
+			EncodeLevel:  zapcore.LowercaseLevelEncoder,
 			EncodeCaller: zapcore.ShortCallerEncoder,
 		},
 	}
@@ -33,7 +33,6 @@ func init() {
 		panic(err)
 	}
 }
-
 
 func Info(msg string, tags ...zap.Field) {
 	log.Info(msg, tags...)
