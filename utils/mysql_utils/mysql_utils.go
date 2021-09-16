@@ -15,7 +15,7 @@ func ParseError(err error) *errors.RestErr {
 	sqlErr, ok := err.(*mysql.MySQLError)
 	if !ok {
 		if strings.Contains(err.Error(), errorNoRows) {
-			return errors.NewNotFoundError("No record matching Given id")
+			return errors.NewNotFoundError("No record found")
 		}
 		return errors.NewInternalServerError("Database error - contact admin")
 	}

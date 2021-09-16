@@ -15,6 +15,7 @@ const (
 	queryUpdateUser   = "update users set first_name = ?, last_name = ?, email = ? where id = ?;"
 	queryDeleteUser   = "delete from users where id = ?;"
 	queryFindByStatus = "select id, first_name, last_name, email, date_created, status from users where status = ?;"
+	queryFindByLogin  = "select id, first_name, last_name, email, date_created, status from users where email = ? and password = ? and status = ?;"
 )
 
 func (user *User) Get() *errors.RestErr {
@@ -112,4 +113,19 @@ func (user *User) FindByStatus(status string) (Users, *errors.RestErr) {
 		return nil, errors.NewNotFoundError(fmt.Sprintf("no users matching status %s", status))
 	}
 	return r, nil
+}
+
+func (user *User) FindByLogin() *errors.RestErr {
+	stmt, err := users_db.Db.Prepare(queryFindByLogin)
+	if err != nil {
+		logger.Error("error when trying to prepare find by login", err)
+		return mysql_utils.ParseError(err)
+	}
+	defer stmt.Close()
+	res := stmt.QueryRow(user.Email, user.Password, user.Status)
+	if err := res.Scan(&user.Id, &user.FirstName, &user.LastName, &user.Email, &user.DateCreated, &user.Status); err != nil {
+		logger.Error("error when trying to scan find by login", err)
+		return mysql_utils.ParseError(err)
+	}
+	return nil
 }

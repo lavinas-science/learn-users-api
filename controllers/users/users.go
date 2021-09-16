@@ -105,3 +105,19 @@ func Search(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, users.Marshall(c.GetHeader("X-Public") == "true"))
 }
+
+func Login(c *gin.Context) {
+	var lg users.Login
+	if err := c.ShouldBindJSON(&lg); err != nil {
+		err := errors.NewBadRequestError("invalid login json body")
+		c.JSON(err.Status, err)
+		return
+	}
+	u, err := services.UserService.LoginUser(lg)
+	if err != nil {
+		c.JSON(err.Status, err)
+		return
+	}
+	c.JSON(http.StatusOK, u.Marshall(c.GetHeader("X-Public") == "true"))
+	
+}
