@@ -10,6 +10,7 @@ import (
 	"github.com/lavinas-science/learn-users-api/domain/users"
 	"github.com/lavinas-science/learn-users-api/services"
 	"github.com/lavinas-science/learn-users-api/utils/errors"
+	"github.com/lavinas-science/learn-oauth-go/oauth"
 )
 
 func getUserId(userIdParam string) (int64, *errors.RestErr) {
@@ -22,6 +23,12 @@ func getUserId(userIdParam string) (int64, *errors.RestErr) {
 }
 
 func Get(c *gin.Context) {
+
+	if err := oauth.AuthenticateRequest(c.Request); err != nil {
+		c.JSON(err.Status, err)
+		return
+	}
+
 	uid, err := getUserId(c.Param("user_id"))
 	if err != nil {
 		c.JSON(err.Status, err)
@@ -32,7 +39,13 @@ func Get(c *gin.Context) {
 		c.JSON(err2.Status, err2)
 		return
 	}
-	c.JSON(http.StatusOK, u.Marshall(c.GetHeader("X-Public") == "true"))
+
+	if oauth.GetCallerId(c.Request) == u.Id {
+		c.JSON(http.StatusOK, u.Marshall(false))
+		return
+	}
+
+	c.JSON(http.StatusOK, u.Marshall(true))
 }
 
 func Create(c *gin.Context) {
@@ -53,12 +66,16 @@ func Create(c *gin.Context) {
 		c.JSON(err.Status, err)
 		return
 	}
-	cr, err := services.UserService.CreateUser(user)
+	u, err := services.UserService.CreateUser(user)
 	if err != nil {
 		c.JSON(err.Status, err)
 		return
 	}
-	c.JSON(http.StatusCreated, cr.Marshall(c.GetHeader("X-Public") == "true"))
+	if oauth.GetCallerId(c.Request) == u.Id {
+		c.JSON(http.StatusOK, u.Marshall(false))
+		return
+	}
+	c.JSON(http.StatusCreated, u.Marshall(true))
 }
 
 func Update(c *gin.Context) {
@@ -75,12 +92,16 @@ func Update(c *gin.Context) {
 	}
 	user.Id = uid
 	isPart := c.Request.Method == http.MethodPatch
-	us, errUp := services.UserService.UpdateUser(isPart, user)
+	u, errUp := services.UserService.UpdateUser(isPart, user)
 	if errUp != nil {
 		c.JSON(errUp.Status, errUp)
 		return
 	}
-	c.JSON(http.StatusOK, us.Marshall(c.GetHeader("X-Public") == "true"))
+	if oauth.GetCallerId(c.Request) == u.Id {
+		c.JSON(http.StatusOK, u.Marshall(false))
+		return
+	}
+	c.JSON(http.StatusOK, u.Marshall(true))
 }
 
 func Delete(c *gin.Context) {
@@ -118,6 +139,13 @@ func Login(c *gin.Context) {
 		c.JSON(err.Status, err)
 		return
 	}
-	c.JSON(http.StatusOK, u.Marshall(c.GetHeader("X-Public") == "true"))
-	
+	if oauth.GetCallerId(c.Request) == u.Id {
+		c.JSON(http.StatusOK, u.Marshall(false))
+		return
+	}
+	if oauth.GetCallerId(c.Request) == u.Id {
+		c.JSON(http.StatusOK, u.Marshall(false))
+		return
+	}
+	c.JSON(http.StatusOK, u.Marshall(true))
 }
