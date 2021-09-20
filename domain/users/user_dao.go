@@ -3,9 +3,9 @@ package users
 import (
 	"fmt"
 	"github.com/lavinas-science/learn-users-api/datasources/mysql/users_db"
-	"github.com/lavinas-science/learn-utils-go/rest_errors"
 	"github.com/lavinas-science/learn-utils-go/logger"
 	"github.com/lavinas-science/learn-utils-go/mysql"
+	"github.com/lavinas-science/learn-utils-go/rest_errors"
 )
 
 const (

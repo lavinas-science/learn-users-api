@@ -23,8 +23,8 @@ type User struct {
 type Users []User
 
 type Login struct {
-	Email       string `json:"email"`
-	Password    string `json:"password"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func (user *User) Validate() *rest_errors.RestErr {

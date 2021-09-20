@@ -86,9 +86,9 @@ func (s *userService) SearchUser(status string) (users.Users, *rest_errors.RestE
 
 func (s *userService) LoginUser(login users.Login) (*users.User, *rest_errors.RestErr) {
 	d := &users.User{
-		Email: login.Email,
+		Email:    login.Email,
 		Password: crypto.GetMd5(login.Password),
-		Status: users.StatusActive,
+		Status:   users.StatusActive,
 	}
 	if err := d.FindByLogin(); err != nil {
 		return nil, err

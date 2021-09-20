@@ -3,13 +3,9 @@ package users
 import "encoding/json"
 
 type PublicUser struct {
-	Id int64 `json:"id"`
-	// FirstName   string `json:"first_name"`
-	// LastName    string `json:"last_name"`
-	// Email       string `json:"email"`
+	Id          int64  `json:"id"`
 	DateCreated string `json:"date_created"`
 	Status      string `json:"status"`
-	// Password    string `json:"password"`
 }
 
 type PrivateUser struct {
@@ -19,7 +15,6 @@ type PrivateUser struct {
 	Email       string `json:"email"`
 	DateCreated string `json:"date_created"`
 	Status      string `json:"status"`
-	// Password    string `json:"password"`
 }
 
 func (user *User) Marshall(isPublic bool) interface{} {

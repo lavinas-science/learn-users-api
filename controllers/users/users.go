@@ -7,10 +7,10 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lavinas-science/learn-oauth-go/oauth"
 	"github.com/lavinas-science/learn-users-api/domain/users"
 	"github.com/lavinas-science/learn-users-api/services"
 	"github.com/lavinas-science/learn-utils-go/rest_errors"
-	"github.com/lavinas-science/learn-oauth-go/oauth"
 )
 
 func getUserId(userIdParam string) (int64, *rest_errors.RestErr) {
