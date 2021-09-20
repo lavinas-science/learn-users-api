@@ -9,14 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/lavinas-science/learn-users-api/domain/users"
 	"github.com/lavinas-science/learn-users-api/services"
-	"github.com/lavinas-science/learn-users-api/utils/errors"
+	"github.com/lavinas-science/learn-utils-go/rest_errors"
 	"github.com/lavinas-science/learn-oauth-go/oauth"
 )
 
-func getUserId(userIdParam string) (int64, *errors.RestErr) {
+func getUserId(userIdParam string) (int64, *rest_errors.RestErr) {
 	uid, err := strconv.ParseInt(userIdParam, 10, 64)
 	if err != nil {
-		err := errors.NewBadRequestError("invalid user id")
+		err := rest_errors.NewBadRequestError("invalid user id")
 		return 0, err
 	}
 	return uid, nil
@@ -62,7 +62,7 @@ func Create(c *gin.Context) {
 	}
 	*/
 	if err := c.ShouldBindJSON(&user); err != nil {
-		err := errors.NewBadRequestError("invalid json body")
+		err := rest_errors.NewBadRequestError("invalid json body")
 		c.JSON(err.Status, err)
 		return
 	}
@@ -86,7 +86,7 @@ func Update(c *gin.Context) {
 		return
 	}
 	if err := c.ShouldBindJSON(&user); err != nil {
-		err := errors.NewBadRequestError("invalid json body")
+		err := rest_errors.NewBadRequestError("invalid json body")
 		c.JSON(err.Status, err)
 		return
 	}
@@ -130,7 +130,7 @@ func Search(c *gin.Context) {
 func Login(c *gin.Context) {
 	var lg users.Login
 	if err := c.ShouldBindJSON(&lg); err != nil {
-		err := errors.NewBadRequestError("invalid login json body")
+		err := rest_errors.NewBadRequestError("invalid login json body")
 		c.JSON(err.Status, err)
 		return
 	}

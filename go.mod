@@ -16,6 +16,7 @@ require (
 	github.com/golang/protobuf v1.3.3 // indirect
 	github.com/json-iterator/go v1.1.9 // indirect
 	github.com/lavinas-science/learn-oauth-go v0.0.0-20210918183517-1fee488d248f // indirect
+	github.com/lavinas-science/learn-utils-go v0.0.0-20210920210638-946c3091aa08 // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/mercadolibre/golang-restclient v0.0.0-20170701022150-51958130a0a0 // indirect

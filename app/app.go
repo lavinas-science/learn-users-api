@@ -2,7 +2,8 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/lavinas-science/learn-users-api/utils/logger"
+
+	"github.com/lavinas-science/learn-utils-go/logger"
 )
 
 var (
