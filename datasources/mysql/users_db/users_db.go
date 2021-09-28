@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-sql-driver/mysql"
+	"github.com/lavinas-science/learn-utils-go/logger"
 )
 
 const (
@@ -30,4 +31,6 @@ func init() {
 	if err := Db.Ping(); err != nil {
 		panic(err)
 	}
+	mysql.SetLogger(logger.GetLogger())
+
 }
