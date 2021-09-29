@@ -45,8 +45,12 @@ github.com/lavinas-science/learn-oauth-go v0.0.0-20210918183517-1fee488d248f h1:
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210918183517-1fee488d248f/go.mod h1:biOdTYypuKyOI4zwtF9n8XPTwDAyh/7pK6AccJfpi8I=
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210920223214-4b26f153c69b h1:CRJlO+vlL/yG3JAbZW4CIvawZa2jVB5J0hQy+sXixBM=
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210920223214-4b26f153c69b/go.mod h1:qWVZqfz0ViGj8uB4mdxTn5vC8CqWQdx/hInsyhhI8DU=
+github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6 h1:Hdb70H+kUW6vydg4IzY/tLeAOwx7wc74YwEN6SnNOUY=
+github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6/go.mod h1:kKJDMQDbcJORaVcltgpa9sOZtaE/ZJq8d5x/ibZKSrY=
 github.com/lavinas-science/learn-utils-go v0.0.0-20210928212206-f2bd593fbe3a h1:WfpqxePbR02rj3EwxllvmKshnxewKo79dkWYvxsV2yU=
 github.com/lavinas-science/learn-utils-go v0.0.0-20210928212206-f2bd593fbe3a/go.mod h1:OAC9exeYukw9cWGqFdwRXkFybwo45TMIG7lwtThazV8=
+github.com/lavinas-science/learn-utils-go v0.0.0-20210929175044-9a20743fedfe h1:A8DECzkGQYMrbqoO8IWCNXCfTRiPRK26bwPROCYemLc=
+github.com/lavinas-science/learn-utils-go v0.0.0-20210929175044-9a20743fedfe/go.mod h1:OAC9exeYukw9cWGqFdwRXkFybwo45TMIG7lwtThazV8=
 github.com/leodido/go-urn v1.2.0/go.mod h1:+8+nEpDfqqsY+g338gtMEUOtuK+4dEMhiQEgxpxOKII=
 github.com/leodido/go-urn v1.2.1 h1:BqpAaACuzVSgi/VLzGZIobT2z4v53pjosyNd9Yv6n/w=
 github.com/leodido/go-urn v1.2.1/go.mod h1:zt4jvISO2HfUBqxjfIshjdMTYS56ZS/qv49ictyFfxY=

@@ -5,8 +5,8 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-sql-driver/mysql v1.6.0
-	github.com/lavinas-science/learn-oauth-go v0.0.0-20210920223214-4b26f153c69b
-	github.com/lavinas-science/learn-utils-go v0.0.0-20210928212206-f2bd593fbe3a
+	github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6
+	github.com/lavinas-science/learn-utils-go v0.0.0-20210929175044-9a20743fedfe
 )
 
 require (

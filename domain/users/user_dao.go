@@ -17,7 +17,7 @@ const (
 	queryFindByLogin  = "select id, first_name, last_name, email, date_created, status from users where email = ? and password = ? and status = ?;"
 )
 
-func (user *User) Get() *rest_errors.RestErr {
+func (user *User) Get() rest_errors.RestErr {
 	stmt, err := users_db.Db.Prepare(queryGetUser)
 	if err != nil {
 		logger.Error("error when trying to prepare get user stat", err)
@@ -32,7 +32,7 @@ func (user *User) Get() *rest_errors.RestErr {
 	return nil
 }
 
-func (user *User) Save() *rest_errors.RestErr {
+func (user *User) Save() rest_errors.RestErr {
 	stmt, err := users_db.Db.Prepare(queryInsertUser)
 	if err != nil {
 		logger.Error("error when trying to prepare save user stat", err)
@@ -54,7 +54,7 @@ func (user *User) Save() *rest_errors.RestErr {
 	return nil
 }
 
-func (user *User) Update() *rest_errors.RestErr {
+func (user *User) Update() rest_errors.RestErr {
 	stmt, err := users_db.Db.Prepare(queryUpdateUser)
 	if err != nil {
 		logger.Error("error when trying to prepare update user stat", err)
@@ -69,7 +69,7 @@ func (user *User) Update() *rest_errors.RestErr {
 	return nil
 }
 
-func (user *User) Delete() *rest_errors.RestErr {
+func (user *User) Delete() rest_errors.RestErr {
 	stmt, err := users_db.Db.Prepare(queryDeleteUser)
 	if err != nil {
 		logger.Error("error when trying to prepare delete user stat", err)
@@ -84,7 +84,7 @@ func (user *User) Delete() *rest_errors.RestErr {
 	return nil
 }
 
-func (user *User) FindByStatus(status string) (Users, *rest_errors.RestErr) {
+func (user *User) FindByStatus(status string) (Users, rest_errors.RestErr) {
 	stmt, err := users_db.Db.Prepare(queryFindByStatus)
 	if err != nil {
 		logger.Error("error when trying to prepare users find by status stat", err)
@@ -114,7 +114,7 @@ func (user *User) FindByStatus(status string) (Users, *rest_errors.RestErr) {
 	return r, nil
 }
 
-func (user *User) FindByLogin() *rest_errors.RestErr {
+func (user *User) FindByLogin() rest_errors.RestErr {
 	stmt, err := users_db.Db.Prepare(queryFindByLogin)
 	if err != nil {
 		logger.Error("error when trying to prepare find by login", err)
