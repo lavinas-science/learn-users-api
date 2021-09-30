@@ -1,0 +1,3 @@
+{"level":"info","time":"2021-09-30T13:43:41.481-0300","msg":"About to Start APP"}
+{"level":"info","time":"2021-09-30T16:02:34.259-0300","msg":"About to Start APP"}
+{"level":"error","time":"2021-09-30T16:06:11.103-0300","msg":"error when trying to exec save user stat","error":"Error 1062: Duplicate entry 'user@user.com' for key 'users.email_UNIQUE'"}

@@ -47,6 +47,8 @@ github.com/lavinas-science/learn-oauth-go v0.0.0-20210920223214-4b26f153c69b h1:
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210920223214-4b26f153c69b/go.mod h1:qWVZqfz0ViGj8uB4mdxTn5vC8CqWQdx/hInsyhhI8DU=
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6 h1:Hdb70H+kUW6vydg4IzY/tLeAOwx7wc74YwEN6SnNOUY=
 github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6/go.mod h1:kKJDMQDbcJORaVcltgpa9sOZtaE/ZJq8d5x/ibZKSrY=
+github.com/lavinas-science/learn-oauth-go v0.0.0-20210929213511-d29af403bc90 h1:P0Hz/iYh3cVDtpM9d1odF/q8DfnnfqRgkURJyMM6u/o=
+github.com/lavinas-science/learn-oauth-go v0.0.0-20210929213511-d29af403bc90/go.mod h1:RNcrSbxNHdVw5X659WfznIJtMDYdpeKKk0yByzJnUQU=
 github.com/lavinas-science/learn-utils-go v0.0.0-20210928212206-f2bd593fbe3a h1:WfpqxePbR02rj3EwxllvmKshnxewKo79dkWYvxsV2yU=
 github.com/lavinas-science/learn-utils-go v0.0.0-20210928212206-f2bd593fbe3a/go.mod h1:OAC9exeYukw9cWGqFdwRXkFybwo45TMIG7lwtThazV8=
 github.com/lavinas-science/learn-utils-go v0.0.0-20210929175044-9a20743fedfe h1:A8DECzkGQYMrbqoO8IWCNXCfTRiPRK26bwPROCYemLc=
@@ -129,6 +131,8 @@ golang.org/x/sys v0.0.0-20210806184541-e5e7981a1069 h1:siQdpVirKtzPhKl3lZWozZraC
 golang.org/x/sys v0.0.0-20210806184541-e5e7981a1069/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 h1:foEbQz/B0Oz6YIqu/69kfXPYeFQAuuMYFkjaqXzl5Wo=
 golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.0.0-20210930141918-969570ce7c6c h1:ayiZ33F3u3LIXB03Y5VKNdaFO79a18Fr+SB30o/KFyw=
+golang.org/x/sys v0.0.0-20210930141918-969570ce7c6c/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=

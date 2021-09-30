@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-sql-driver/mysql v1.6.0
-	github.com/lavinas-science/learn-oauth-go v0.0.0-20210929180720-097d130611a6
+	github.com/lavinas-science/learn-oauth-go v0.0.0-20210929213511-d29af403bc90
 	github.com/lavinas-science/learn-utils-go v0.0.0-20210929210835-7d8459f50063
 )
 
@@ -27,7 +27,7 @@ require (
 	go.uber.org/zap v1.19.1 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20210929193557-e81a3d93ecf6 // indirect
-	golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 // indirect
+	golang.org/x/sys v0.0.0-20210930141918-969570ce7c6c // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
